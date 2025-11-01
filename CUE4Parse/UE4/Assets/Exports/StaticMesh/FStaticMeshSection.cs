@@ -1,3 +1,4 @@
+using CUE4Parse.GameTypes.InfinityNikki;
 using CUE4Parse.UE4.Readers;
 using CUE4Parse.UE4.Versions;
 using Newtonsoft.Json;
@@ -36,7 +37,7 @@ public class FStaticMeshSection
         bAffectDistanceFieldLighting = Ar.Game >= EGame.GAME_UE5_1 && Ar.ReadBoolean();
         if (Ar.Game is EGame.GAME_RogueCompany or EGame.GAME_Grounded or EGame.GAME_Grounded2 or EGame.GAME_RacingMaster
             or EGame.GAME_MetroAwakening or EGame.GAME_Avowed) Ar.Position += 4;
-        if (Ar.Game is EGame.GAME_InfinityNikki)
+        if (Ar.Versions.IsInfinityNikkiVersion())
         {
             CustomData = Ar.Read<int>();
             Ar.Position += 8;

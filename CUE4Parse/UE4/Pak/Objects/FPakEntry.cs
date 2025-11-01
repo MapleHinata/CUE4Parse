@@ -373,7 +373,7 @@ public class FPakEntry : VfsEntry
         {
             GAME_TorchlightInfinite or GAME_EtheriaRestart => 1,
             GAME_BlackMythWukong => 1,
-            { } when reader.Ar.Versions.IsInfinityNikkiCustomAesVersion() => 20,
+            { } when reader.Ar.Versions.IsInfinityNikkiExtraPakHashVersion() => 20,
             GAME_VisionsofMana => -3,
             _ => 0
         };

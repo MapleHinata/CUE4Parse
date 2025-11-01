@@ -14,8 +14,12 @@ public static class NikkiVersionContainerExtensions
             or EGame.GAME_InfinityNikki
             or EGame.GAME_InfinityNikkiV19;
 
-    public static bool IsInfinityNikkiCustomAesVersion(this VersionContainer container)
-        => container.Game is EGame.GAME_InfinityNikki or EGame.GAME_InfinityNikkiV19;
+    public static bool IsInfinityNikkiExtraPakHashVersion(this VersionContainer container)
+        => container.Game
+            is EGame.GAME_InfinityNikkiCbt1
+            or EGame.GAME_InfinityNikkiCbt3
+            or EGame.GAME_InfinityNikki
+            or EGame.GAME_InfinityNikkiV19;
 
     public static bool IsInfinityNikkiIoStoreBlockProcessNeeded(this VersionContainer container)
         => container.Game is EGame.GAME_InfinityNikki;

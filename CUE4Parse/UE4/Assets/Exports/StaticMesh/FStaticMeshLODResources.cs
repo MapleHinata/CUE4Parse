@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using CUE4Parse.GameTypes.FF7.Assets.Objects;
+using CUE4Parse.GameTypes.InfinityNikki;
 using CUE4Parse.UE4.Assets.Objects;
 using CUE4Parse.UE4.Assets.Readers;
 using CUE4Parse.UE4.Objects.Core.Math;
@@ -89,7 +90,7 @@ public class FStaticMeshLODResources
                     case EGame.GAME_TheDivisionResurgence:
                         Ar.Position += 12;
                         break;
-                    case EGame.GAME_InfinityNikki when Sections.Any(x => x.CustomData == 1):
+                    case {} when Ar.Versions.IsInfinityNikkiVersion() && Sections.Any(x => x.CustomData == 1):
                         _ = Ar.ReadArray(4, () => new FRawStaticIndexBuffer(Ar));
                         break;
                 }
