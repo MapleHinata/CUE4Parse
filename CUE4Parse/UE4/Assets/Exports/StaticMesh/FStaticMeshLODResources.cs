@@ -96,7 +96,7 @@ public class FStaticMeshLODResources
                         Ar.Position += 4;
                         if (Ar.Read<int>() > 0) Ar.SkipBulkArrayData();
                         break;
-                    case {} when Ar.Versions.IsInfinityNikkiVersion() && Sections.Any(x => x.CustomData == 1):
+                    case {} when Ar.Versions.IsInfinityNikkiVersion() && Sections.Any(x => x.CustomData.HasValue && x.CustomData.Value == 1):
                         _ = Ar.ReadArray(4, () => new FRawStaticIndexBuffer(Ar));
                         break;
                 }
