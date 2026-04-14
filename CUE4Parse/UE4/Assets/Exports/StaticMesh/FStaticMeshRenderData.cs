@@ -179,7 +179,7 @@ public class FStaticMeshRenderData
         }
 
         if (Ar.Game is EGame.GAME_DeltaForceHawkOps or EGame.GAME_DeadzoneRogue) Ar.Position += 4;
-        if (Ar.Versions.IsInfinityNikkiVersion()) Ar.Position += 8;
+        if (Ar.Game is EGame.GAME_InfinityNikki or EGame.GAME_InfinityNikkiV19) Ar.Position += 8;
 
         var screenSizeLength = Ar.Game switch
         {

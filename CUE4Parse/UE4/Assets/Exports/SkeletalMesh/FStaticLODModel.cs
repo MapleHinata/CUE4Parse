@@ -497,7 +497,7 @@ public class FStaticLODModel
         if (HasClothData())
             ClothVertexBuffer = new FSkeletalMeshVertexClothBuffer(Ar);
 
-        if (Ar.Versions.IsInfinityNikkiVersion() && Sections.Any(x => x.X6GameUnknownBool1))
+        if (Ar.Versions.IsInfinityNikkiVersion() && Sections.Any(x => x.CustomData.HasValue && x.CustomData.Value > 0))
         {
             _ = new FMultisizeIndexContainer(Ar);
             _ = new FMultisizeIndexContainer(Ar);

@@ -46,10 +46,7 @@ public class FSkelMeshSection
     public int GenerateUpToLodIndex;
     public int OriginalDataSectionIndex;
     public int ChunkedParentSectionIndex;
-
-    public bool X6GameUnknownBool1;
-    public bool X6GameUnknownBool2;
-    public bool X6GameUnknownBool3;
+    public int? CustomData;
 
     public bool HasClothData => ClothMappingDataLODs.Any(data => data.Length > 0);
 
@@ -268,19 +265,7 @@ public class FSkelMeshSection
             bDisabled = Ar.ReadBoolean();
         }
 
-        if (Ar.Versions.IsInfinityNikkiVersion())
-        {
-            if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.SkelMeshRenderSectionChanges1)
-            {
-                X6GameUnknownBool1 = Ar.ReadBoolean();
-                X6GameUnknownBool2 = Ar.ReadBoolean();
-            }
-
-            if (FX6GameCustomVersion.Get(Ar) >= FX6GameCustomVersion.Type.SkelMeshRenderAndStaticMeshSectionChanges2)
-            {
-                X6GameUnknownBool3 = Ar.ReadBoolean();
-            }
-        }
+        if (Ar.Versions.IsInfinityNikkiVersion()) CustomData = Ar.Read<int>();
 
         Ar.Position += Ar.Game switch
         {
@@ -289,7 +274,7 @@ public class FSkelMeshSection
             EGame.GAME_FragPunk => 8,
             {} when Ar.Versions.IsInfinityNikkiVersion() => 8,
             EGame.GAME_MortalKombat1 => 12,
-            EGame.GAME_FateTrigger => 15,
+            EGame.GAME_FateTrigger => 19,
             EGame.GAME_Strinova => 18,
             EGame.GAME_SuicideSquad => 11,
             _ => 0,
